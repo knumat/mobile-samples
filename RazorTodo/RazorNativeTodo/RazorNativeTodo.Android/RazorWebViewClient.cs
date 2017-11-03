@@ -9,6 +9,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Webkit;
+using RazorNativeTodo.Views;
 
 namespace RazorNativeTodo
 {

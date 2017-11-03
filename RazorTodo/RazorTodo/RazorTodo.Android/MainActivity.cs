@@ -9,6 +9,8 @@ using System.IO;
 using Android.Speech.Tts;
 using Android.Webkit;
 using System.Linq;
+using RazorTodo.Views;
+using Pa;
 
 namespace RazorTodo
 {
@@ -56,7 +58,7 @@ namespace RazorTodo
 			webView.SetWebViewClient (new RazorWebViewClient (this));
 
 			// Render the view from the type generated from RazorView.cshtml
-			var model = App.Database.GetItems ().ToList();
+			var model = new Lip3Data().MyRecs;
 			var template = new TodoList () { Model = model };
 			var page = template.GenerateString ();
 

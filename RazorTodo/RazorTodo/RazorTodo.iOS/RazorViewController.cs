@@ -6,6 +6,8 @@ using Foundation;
 using System.Linq;
 using Twitter;
 using MessageUI;
+using RazorTodo.Views;
+using Pa;
 
 namespace RazorTodo
 {
@@ -25,10 +27,10 @@ namespace RazorTodo
 			// Intercept URL loading to handle native calls from browser
 			webView.ShouldStartLoad += HandleShouldStartLoad;
 
-			// Render the view from the type generated from RazorView.cshtml
+            // Render the view from the type generated from RazorView.cshtml
 
-			var model = App.Database.GetItems ().ToList ();
-			var template = new TodoList () { Model = model };
+            var model = new Lip3Data().MyRecs;
+            var template = new TodoList () { Model = model };
 			var page = template.GenerateString ();
 			webView.LoadHtmlString (page, NSBundle.MainBundle.BundleUrl);
 		}
@@ -46,8 +48,8 @@ namespace RazorTodo
 			var parameters = System.Web.HttpUtility.ParseQueryString(resources[1]); // breaks if ? not present (ie no params)
 
 			if (method == "ListAll") {
-				var model = App.Database.GetItems ().ToList();
-				var template = new TodoList () { Model = model };
+                var model = new Lip3Data().MyRecs;
+                var template = new TodoList () { Model = model };
 				var page = template.GenerateString ();
 				webView.LoadHtmlString (page, NSBundle.MainBundle.BundleUrl);
 			}
@@ -122,8 +124,8 @@ namespace RazorTodo
 
 					App.Database.SaveItem (todo);
 
-					var model = App.Database.GetItems ().ToList ();
-					var template = new TodoList () { Model = model };
+                    var model = new Lip3Data().MyRecs;
+                    var template = new TodoList () { Model = model };
 					var page = template.GenerateString ();
 					webView.LoadHtmlString (page, NSBundle.MainBundle.BundleUrl);
 				} else if (button == "Delete") {
@@ -131,13 +133,13 @@ namespace RazorTodo
 
 					App.Database.DeleteItem (Convert.ToInt32 (id));
 
-					var model = App.Database.GetItems ().ToList ();
-					var template = new TodoList () { Model = model };
+                    var model = new Lip3Data().MyRecs;
+                    var template = new TodoList () { Model = model };
 					var page = template.GenerateString ();
 					webView.LoadHtmlString (page, NSBundle.MainBundle.BundleUrl);
 				} else if (button == "Cancel") {
-					var model = App.Database.GetItems ().ToList ();
-					var template = new TodoList () { Model = model };
+                    var model = new Lip3Data().MyRecs;
+                    var template = new TodoList () { Model = model };
 					var page = template.GenerateString ();
 					webView.LoadHtmlString (page, NSBundle.MainBundle.BundleUrl);
 				} else if (button == "Speak") {

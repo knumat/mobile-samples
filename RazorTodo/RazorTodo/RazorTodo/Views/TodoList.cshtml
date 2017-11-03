@@ -1,19 +1,20 @@
 ﻿@using RazorTodo
-@model List<TodoItem>
+@using Pa
+@model List<LipEntry>
 <html>
 	<head><link rel="stylesheet" href="style.css" /></head>
 <body>
 	<h1>HybridRazorTodo <a href="hybrid:AddTask?"><img src="plus.png"/></a></h1>
-	<a href="hybrid:SpeakAll?">Speak Undone</a>
-	<a href="hybrid:TweetAll?">Tweet Undone</a>
-	<ul>
-	@foreach (var todo in @Model) {
-		<li><a href="hybrid:ViewTask?todoid=@todo.ID">@todo.Name</a>
-		@if (@todo.Done) {
-			<img src="check.png" />
-		}
-		</li>	
+	<table>
+	@foreach (var entry in @Model) {
+		<tr>
+            <td>@entry.phonetic</td>
+            <td>@entry.gloss</td>
+            <td>@entry.pos</td>
+            <td>@entry.cvPat</td>
+            <td>@entry.myRef</td>
+		</tr>
 	}
-	</ul>
+	</table>
 </body>
 </html>

@@ -9,6 +9,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Webkit;
+using RazorTodo.Views;
+using Pa;
 
 namespace RazorTodo
 {
@@ -33,8 +35,8 @@ namespace RazorTodo
 
 
 			if (method == "ListAll") {
-				var model = App.Database.GetItems ().ToList();
-				var template = new TodoList () { Model = model };
+                var model = new Lip3Data().MyRecs;
+                var template = new TodoList () { Model = model };
 				var page = template.GenerateString ();
 				webView.LoadDataWithBaseURL("file:///android_asset/", page, "text/html", "UTF-8", null);
 			}
@@ -96,8 +98,8 @@ namespace RazorTodo
 
 					App.Database.SaveItem (todo);
 
-					var model = App.Database.GetItems ().ToList ();
-					var template = new TodoList () { Model = model };
+                    var model = new Lip3Data().MyRecs;
+                    var template = new TodoList () { Model = model };
 					var page = template.GenerateString ();
 					webView.LoadDataWithBaseURL("file:///android_asset/", page, "text/html", "UTF-8", null);
 				} else if (button == "Delete") {
@@ -105,13 +107,13 @@ namespace RazorTodo
 
 					App.Database.DeleteItem (Convert.ToInt32 (id));
 
-					var model = App.Database.GetItems ().ToList ();
-					var template = new TodoList () { Model = model };
+                    var model = new Lip3Data().MyRecs;
+                    var template = new TodoList () { Model = model };
 					var page = template.GenerateString ();
 					webView.LoadDataWithBaseURL("file:///android_asset/", page, "text/html", "UTF-8", null);
 				} else if (button == "Cancel") {
-					var model = App.Database.GetItems ().ToList ();
-					var template = new TodoList () { Model = model };
+                    var model = new Lip3Data().MyRecs;
+                    var template = new TodoList () { Model = model };
 					var page = template.GenerateString ();
 					webView.LoadDataWithBaseURL("file:///android_asset/", page, "text/html", "UTF-8", null);
 				} else if (button == "Speak") {
